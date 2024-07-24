@@ -1,0 +1,35 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem[Pagh et~al.(2004)Pagh and Rodler]{pagh2004cuckoo}
+Pagh R, Rodler F~F.
+\newblock Cuckoo hashing\allowbreak[J].
+\newblock Journal of Algorithms, 2004, 51\allowbreak (2): 122-144.
+
+\bibitem[Dietzfelbinger et~al.(2005)Dietzfelbinger and
+  Weidling]{dietzfelbinger2005data}
+Dietzfelbinger M, Weidling C.
+\newblock Data structures ii-balanced allocation and dictionaries with tightly
+  packed constant size bins\allowbreak[J].
+\newblock Lecture Notes in Computer Science, 2005, 3580: 166-178.
+
+\bibitem[Fan et~al.(2014)Fan, Andersen, Kaminsky, and
+  Mitzenmacher]{fan2014cuckoo}
+Fan B, Andersen D~G, Kaminsky M, et~al.
+\newblock Cuckoo filter: Practically better than
+  bloom\allowbreak[C]//\allowbreak
+Proceedings of the 10th ACM International on Conference on emerging Networking
+  Experiments and Technologies.
+\newblock 2014: 75-88.
+
+\end{thebibliography}

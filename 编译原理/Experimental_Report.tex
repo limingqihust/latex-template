@@ -1,0 +1,366 @@
+\documentclass[supercite]{Experimental_Report}
+
+\title{\ }
+\school{计算机科学与技术学院}
+\classnum{本硕博2001班}
+\stunum{U202015630}
+\author{李茗畦}
+\instructor{杨茂林}
+\usepackage{zhnumber} % change section number to chinese
+\renewcommand\thesection{\arabic{section}}
+\renewcommand \thesubsection {\arabic{section}.\arabic{subsection}}
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees}
+\usepackage{algorithm, multirow}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{arydshln}
+\usepackage{mathtools}
+\usepackage{subcaption}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{tabu}
+\usepackage{xltxtra} %提供了针对XeTeX的改进并且加入了XeTeX的LOGO, 自动调用xunicode宏包(提供Unicode字符宏)
+\usepackage{bm}
+\usepackage{longtable}
+\usepackage{tikz}
+\usepackage{pdfpages}
+\usepackage{tikzscale}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{fontspec}
+\usepackage{xcolor}      %代码着色宏包
+\usepackage{CJK}         %显示中文宏包
+\usepackage{pifont}
+\usepackage{array}
+\usepackage{booktabs}
+
+
+
+
+
+\pgfplotsset{compat=1.16}
+
+\newcommand{\cfig}[3]{
+  \begin{figure}[htb]
+    \centering
+    \includegraphics[width=#2\textwidth]{images/#1.tikz}
+    \caption{#3}
+    \label{fig:#1}
+  \end{figure}
+}
+
+\newcommand{\sfig}[3]{
+  \begin{subfigure}[b]{#2\textwidth}
+    \includegraphics[width=\textwidth]{images/#1.tikz}
+    \caption{#3}
+    \label{fig:#1}
+  \end{subfigure}
+}
+
+\newcommand{\xfig}[3]{
+  \begin{figure}[htb]
+    \centering
+    #3
+    \caption{#2}
+    \label{fig:#1}
+  \end{figure}
+}
+
+\newcommand{\rfig}[1]{\autoref{fig:#1}}
+\newcommand{\ralg}[1]{\autoref{alg:#1}}
+\newcommand{\rthm}[1]{\autoref{thm:#1}}
+\newcommand{\rlem}[1]{\autoref{lem:#1}}
+\newcommand{\reqn}[1]{\autoref{eqn:#1}}
+\newcommand{\rtbl}[1]{\autoref{tbl:#1}}
+
+\algnewcommand\Null{\textsc{null }}
+\algnewcommand\algorithmicinput{\textbf{Input:}}
+\algnewcommand\Input{\item[\algorithmicinput]}
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+\algnewcommand\algorithmicbreak{\textbf{break}}
+\algnewcommand\Break{\algorithmicbreak}
+\algnewcommand\algorithmiccontinue{\textbf{continue}}
+\algnewcommand\Continue{\algorithmiccontinue}
+\algnewcommand{\LeftCom}[1]{\State $\triangleright$ #1}
+
+
+\newtheorem{thm}{定理}[section]
+\newtheorem{lem}{引理}[section]
+\colorlet{shadecolor}{black!15}
+
+\theoremstyle{definition}
+\newtheorem{alg}{算法}[section]
+\def\thmautorefname~#1\null{定理~#1~\null}
+\def\lemautorefname~#1\null{引理~#1~\null}
+\def\algautorefname~#1\null{算法~#1~\null}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[skins]{tcolorbox}
+
+
+\tcbuselibrary{breakable}
+\newtcolorbox{abox}[1][]{enhanced,
+	fonttitle = \heiti \large \bfseries,% 标题字体设置
+	colbacktitle =black,% 标题背景颜色
+	coltitle=white,% 标题字体颜色
+	% halign title=center,% 标题对齐方式
+	attach boxed title to top left = {yshift = -5pt},
+	%	将标题以box 形式放在文本框左上角，并向下移动5pt	
+	%----------正文字体--------
+	fontupper = \kaishu,%正文字体设置
+	%colback = white,%正文背景颜色设置
+	%---------边框设置---------
+	arc = 4pt,%正文边框边角弧度
+	%	boxed title style={arc=0pt},%标题框边角弧度
+	colframe=black,%边框颜色设置
+	toprule  = 1pt,%取消上边框
+	rightrule = 1pt,%取消下边框
+	%---------调整字体位置------
+	top = 10pt,%增大正文文本与上边框距离
+	%---------设置标题为默认参数，不影响其他参数的设置
+	title=#1,
+	breakable
+}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+%修改第三级标题
+\usepackage{natbib}
+\newcommand{\upcite}[1]{{\setcitestyle{square,super}\cite{#1}}}
+
+\lstset{
+    basicstyle=\ttfamily\fontseries{m},  % 将字体变细
+    breaklines=true,
+    lineskip=-0.5pt,
+    columns=fullflexible,  % 配合keepspaces一起使用，保留空格
+    %行号
+    numbers=left,
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    escapeinside=``,
+    xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+    %背景框
+    framexleftmargin=1.5mm,
+    frame=single,
+    %背景色
+    % backgroundcolor=\color[RGB]{245,245,244},
+    %样式
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\ttfamily\color{black},
+    numberstyle=\color[RGB]{0,192,192},
+    commentstyle=\it\color[RGB]{96,96,96},
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+    %显示空格
+    showstringspaces=false
+}
+
+\setcounter{tocdepth}{2}  % 设置目录只显示一级标题和二级标题
+
+\begin{document}
+\maketitle
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\clearpage
+
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=1.30]{./images/shengming.jpg}
+		\label{fig1-1}
+	\end{center}
+\end{figure}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\clearpage
+
+
+\tableofcontents
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\clearpage
+
+
+\section{编译工具链的使用}
+\subsection{实验任务}
+本节实验需要完成以下任务：
+\begin{enumerate}
+  \item 编译工具链的使用；
+  \item Sysy语言及运行时库；
+  \item 目标平台riscv64的汇编语言；
+\end{enumerate}
+
+本次实验选择的是目标平台riscv64的汇编语言。
+\subsection{实验实现}
+\subsubsection{编译工具链的使用}
+使用如下命令使用gcc编译器将alibaba.c和def-test.c编译生成命名为def-test的可执行文件，使用-D BILIBILI添加预处理语句\#define BILIBILI
+\begin{center}
+\begin{lstlisting}[language=bash]
+gcc -D BILIBILI alibaba.c def-test.c -o def-test
+\end{lstlisting}
+\end{center}
+
+使用以下命令使用clang编译器将bar.c编译成armv7汇编代码。其中-O2表示编译器对程序的优化级别，-S表示用于生成汇编代码而不是可执行文件，-target armv7-linux-gnueabihf设置目标平台为ARMv7指令集的Linux操作系统。
+
+\begin{center}
+\begin{lstlisting}[language=bash]
+clang -S -O2 -target armv7-linux-gnueabihf  bar.c -o bar.clang.arm.s
+\end{lstlisting}
+\end{center}
+
+使用以下命令使用arm-linux-gnueabihf-gcc将iplusf.c编译成arm汇编代码iplusf.arm.s，之后使用arm-linux-gnueabihf-gcc将iplusf.arm.s连接SysY2022的运行时库sylib.a生成可执行文件iplusf.arm，并在qemu-arm上运行该可执行文件。
+
+\begin{center}
+\begin{lstlisting}[language=bash]
+arm-linux-gnueabihf-gcc -S iplusf.c -o iplusf.arm.s
+arm-linux-gnueabihf-gcc iplusf.arm.s sylib.a -o iplusf.arm
+qemu-arm -L /usr/arm-linux-gnueabihf/ ./iplusf.arm\end{lstlisting}
+\end{center}
+
+最后要求编写一个Makefile,将main.cc和helloworld.cc编译为文件名为helloworld的可执行文件，其中头文件目录为./include，Makefile如下所示，其中-I用于指定头文件目录。
+\begin{center}
+\begin{lstlisting}[language=bash]
+objects:=main.o helloworld.o
+CC:=clang++
+CFLAGS:=-O2
+INCLUDE:=./include
+helloworld:$(objects)
+	$(CC) $(CFLAGS) $(objects) -o helloworld
+main.o:main.cc
+	$(CC) -c -I $(INCLUDE) $(CFLAGS) main.cc -o main.o
+helloworld.o:helloworld.cc
+	$(CC) -c -I $(INCLUDE) $(CFLAGS) helloworld.cc -o helloworld.o
+\end{lstlisting}
+\end{center}
+\subsubsection{Sysy语言及其运行时库}
+本实验较简单，需要注意的就是Sysy是c语言的一个子集，不能使用Sysy不支持的语法。
+\subsubsection{目标平台-RISCV}
+本实验也较简单，因此不再详细阐述实现过程。
+\newpage
+\section{词法分析}
+\subsection{实验任务}
+本实验的任务为实现Sysy词法分析器，我实现的是基于flex的Sysy词法分析器(C语言实现)。需要完成识别标识符ID、int型字面量INT\_LIT和float型字面量FLOAT\_LIT。
+
+\subsection{词法分析器的实现}
+首先声明以下一系列规则，分别用于匹配单个数字、单个符号、单个非零十进制数、单个非零八进制数、单个十六进制数和十六进制的前缀"0x"和"0X"。
+\begin{lstlisting}[float=htb]
+DIGIT [0-9]
+LETTER [A-Za-z_]
+NOZERO_DIGIT [1-9]
+OCTAL_DIGIT [0-7]
+HEXADECIMAL_DIGIT [0-9a-fA-F]
+HEXADECIMAL_PREFIX "0X"|"0x"
+\end{lstlisting}
+
+以下规则分别用于匹配十进制常数、八进制常数、十六进制常数和int型常量。其中十进制常数需要保证第一个数字是非零的十进制数，八进制常数需要保证第一个数是0，十六进制的常数需要保证最开始是十六进制的前缀。int型常量就是十进制、八进制或者十六进制常数。
+\begin{lstlisting}[float=htb]
+DECIMAL_CONST {NOZERO_DIGIT}{DIGIT}*
+OCTAL_CONST 0{OCTAL_DIGIT}*
+HEXADECIMAL_CONST {HEXADECIMAL_PREFIX}{HEXADECIMAL_DIGIT}*
+INTEGER_CONST {DECIMAL_CONST}|{OCTAL_CONST}|{HEXADECIMAL_CONST}
+\end{lstlisting}
+
+使用以下规则匹配float型常量。其中EXPONENT用于匹配浮点数中的指数部分。
+\begin{lstlisting}[float=htb]
+EXPONENT [eE][-+]?{DIGIT}+
+FLOAT_CONST ({DIGIT}+"."{DIGIT}*{EXPONENT}?|{DIGIT}*"."{DIGIT}+{EXPONENT}?|{DIGIT}+{EXPONENT})[Ff]?
+\end{lstlisting}
+
+使用以下规则匹配标识符。标识符由字母或者符号组成，第一个字符需要保证是符号。
+\begin{lstlisting}[]
+IDENTIFIER {LETTER}({LETTER}|{DIGIT})*
+\end{lstlisting}
+\newpage
+\section{语法分析}
+\subsection{实验任务}
+在给出的语法分析器框架的基础上，实现一个Sysy语言的语法分析。我实现的是一个基于flex/bison的语法分析器(C语言实现)。需要完成的语义规则包括赋值语句、if-else语句、while语句、break语句、continue语句和return语句等。
+\subsection{语法分析器的实现}
+本实验中我们只需要调用new\_node构造节点即可。实现代码如下。需要注意的是new\_node函数的left、mid和right参数，当只有两个子结点时，需要使用left和right节点，只有一个子结点时使用的是right节点。
+
+\begin{lstlisting}[float=htb]
+Stmt :  LVal ASSIGN Exp SEMICOLON { $$ = new_node(Stmt,$1,NULL,$3,AssignStmt,0,NULL,NonType); }
+    | SEMICOLON { $$=NULL; }
+    | Exp SEMICOLON { $$ = new_node(Stmt,NULL,NULL,$1,ExpStmt,0,NULL,NonType); }
+    | Block { $$ = new_node(Stmt,NULL,NULL,$1,Block,0,NULL,NonType); }
+    | IF LP Cond RP Stmt { $$ = new_node(Stmt,$3,NULL,$5,IfStmt,0,NULL,NonType); }
+    | IF LP Cond RP Stmt ELSE Stmt { $$ = new_node(Stmt,$3,$5,$7,IfElseStmt,0,NULL,NonType); }
+    | WHILE LP Cond RP Stmt { $$ = new_node(Stmt,$3,NULL,$5,WhileStmt,0,NULL,NonType); }
+    | BREAK SEMICOLON { $$ = new_node(Stmt,NULL,NULL,NULL,BreakStmt,0,NULL,NonType); }
+    | CONTINUE SEMICOLON { $$ = new_node(Stmt,NULL,NULL,NULL,ContinueStmt,0,NULL,NonType); }
+    | RETURN SEMICOLON { $$ = new_node(Stmt,NULL,NULL,NULL,BlankReturnStmt,0,NULL,NonType); }
+    | RETURN Exp SEMICOLON { $$ = new_node(Stmt,NULL,NULL,$2,ReturnStmt,0,NULL,NonType); };
+\end{lstlisting}
+\newpage
+\section{中间代码生成}
+\subsection{实验任务}
+在给出的中间代码生成器框架基础上完成LLVM IR中间代码的生成，将Sysy语言程序翻译成LLVM IR中间代码。我们需要完成的是GenIR的visit方法中的ASS分支。
+\subsection{中间代码生成器的实现}
+ASS类型的结点是赋值语句，它有两个子节点：lVal和exp。其语义是将exp的值存储到代表左值的变量地址。首先将requireLVal赋值为true，表示当前的lVal是赋值语句左值，不是表达式。接着调用lVal的accept方法取出表达式的左部，之后再用同样的方法取出表达式的右部。需要注意的是，我们需要检查赋值语句的左值和右值的类型是否匹配，两个操作数必须是同一类型。当左值是int32类型而右值是float类型时，需要将右值转换为int32类型；当左值是float类型而右值是int32类型时，需要将右值转换为float类型。最后调用IRStmtBuilder::create\_store(Value *val, Value *ptr)方法生成store指令。该部分的实现代码如下所示。
+
+\begin{lstlisting}[float=htb,language=C]
+requireLVal=true;                       // 当前lVal是赋值语句左部
+ast.lVal->accept(*this);                // 取出左部
+auto left_val=recentVal;
+ast.exp->accept(*this);                 // 取出右部
+auto right_val=recentVal;
+if(left_val->type_->tid_==Type::TypeID::IntegerTyID && right_val->type_->tid_==Type::TypeID::FloatTyID)
+    right_val=builder->create_fptosi(right_val,left_val->type_);
+else if(left_val->type_->tid_==Type::TypeID::IntegerTyID && right_val->type_->tid_==Type::TypeID::FloatTyID)
+    right_val=builder->create_fptosi(right_val,left_val->type_);
+builder->create_store(right_val,left_val);
+\end{lstlisting}
+
+\newpage
+\section{目标代码生成}
+\subsection{实验任务}
+在给出的代码框架基础上，将LLVM IR中间代码翻译成指定平台的目标代码。我实现的是生成平台为RISCV64的目标代码。
+
+\subsection{目标代码生成器的实现}
+首先需要指定目标三元组。在本实验中将目标平台设置为"riscv64-unknown-elf",并初始化所有用来生成目标代码的目标。之后调用TargetRegistry::lookupTarget 函数，通过刚刚得到的目标三元组得到一个对应的目标。
+\begin{lstlisting}[float=htb,language=C]
+auto target_triple = "riscv64-unknown-elf";
+module->setTargetTriple(target_triple);
+InitializeAllTargetInfos();
+InitializeAllTargets();
+InitializeAllTargetMCs();
+InitializeAllAsmParsers();
+InitializeAllAsmPrinters();
+\end{lstlisting}
+
+接下来需要指定目标机器，我们只需要使用通用CPU。
+
+然后我们生成目标代码。调用getGenFilename()函数，获得要写入的目标代码文件名filename。接下来实例化一个raw\_fd\_ostream类的对象dest，其中Flags成员置sys::fs::OF\_None，实例化legacy::PassManager类的对象pass。然后为file\_type赋初值。该部分代码如下所示。
+\begin{lstlisting}[language=C]
+std::string filename=getGenFilename(ir_filename,gen_filetype);
+std::error_code EC;
+auto dest=raw_fd_ostream(filename, EC, sys::fs::OF_None);
+if(EC){
+    errs()<<"raw_fd_ostream error";
+    return 1;
+}
+legacy::PassManager pass;
+auto filetype=gen_filetype;
+if (TheTargetMachine->addPassesToEmitFile(pass, dest, nullptr,filetype)) {
+    errs() << "TheTargetMachine can't emit a file of this type";
+    return 1;
+}
+pass.run(*module);
+dest.flush();
+\end{lstlisting}
+
+\newpage
+\section{总结}
+本次课程的实验主要包括词法分析、语法分析、语义分析、中间代码生成和目标代码生成等几部分。通过这次实验，我对编译原理中的词法分析器、语法分析器等有了一个基本的理解。对编译原理理论课程中学习到的知识进行了时间，加深了对理论课程知识的理解和掌握。
+
+
+\end{document}
